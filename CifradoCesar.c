@@ -9,19 +9,16 @@
 
 #include <stdio.h>
 
-void instrucciones(char abc[26]){
+void instrucciones(char abc[]){
 
     printf("\nPor favor usa únicamente letras mayúsculas y el abecesario que usa es el abecadario inglés.\n");
     printf("Si tienes duda de cuál es este abecesario, a continuación te presento las letras que puedes usar.\n");
-    
-    for(int i = 0; i<26 ; i++){
-        printf("%c ", abc[i]);
-    }
+    printf("%s", abc);
 }
 
 int menu(){
 
-    short op;
+    int op;
     printf("\nHola, las opciones a realizar son:");
     printf("\n1. Cifrar un texto.");
     printf("\n2. Decifrar un texto.");
@@ -38,12 +35,12 @@ int menu(){
 
 }
 
-void cifrado(char abc[26]){
+void cifrado(char abc[]){
     puts(abc);
 }
 
 
-void decifrado(char abc[26]){
+void decifrado(char abc[]){
     puts(abc);
 }
 
@@ -51,8 +48,9 @@ void decifrado(char abc[26]){
 
 int main(){
 
-    short opcion;
+    int opcion;
     char abedecarioIngles[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    printf("%s",abedecarioIngles);
     do{
         opcion = menu();
         switch (opcion)
