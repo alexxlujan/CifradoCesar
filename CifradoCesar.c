@@ -58,6 +58,7 @@ void cifrado(char abc[],char tex[]){
             break;
         }
         printf("%c", abc[letra+desplazamiento]);
+        iterador++;
     }
 }
 
@@ -101,3 +102,51 @@ int main(){
     printf("\n¡Hasta Luego!\n");
     return 0;
 }
+
+
+/*
+#include<stdio.h>
+#include<string.h>
+
+int main(){
+    
+    char abedecarioIngles[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    char t[50];
+    int i,l;
+    printf("Ingresa texto: ");
+    gets(t);
+    
+    
+    
+    
+    i=0;
+    while(t[i] != '\0'){
+        for(int j=0; j < 26; j++){
+            if(t[i]==abedecarioIngles[j]){
+                printf("%c", abedecarioIngles[j+3]);
+                break;
+            }
+            switch(t[i]){
+                case 'X':{
+                    printf("%c",'A');
+                    break;
+                }
+                case 'Y':{
+                    printf("%c",'B');
+                    break;
+                }
+                case 'Z':{
+                    printf("%c",'C');
+                    break;
+                }
+                case ' ':{
+                    printf("%c",' ');
+                    break;
+                }
+            }break;
+        }
+        i++;
+    }
+}
+
+*/
