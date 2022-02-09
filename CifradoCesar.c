@@ -14,12 +14,16 @@
 
 void instrucciones(char abc[]){
 
+    //Aclaraciones al usuario para el uso de este programa
+
     printf("\nPor favor usa únicamente letras mayúsculas del abecadario inglés.\n");
     printf("Si tienes duda de cuál es este abecesario, a continuación te presento las letras que puedes usar:\n");
     printf("%s", abc);
 }
 
 int menu(){
+
+    //Menú de posibles acciones a realizar
 
     int op;
     printf("\nLas opciones a realizar son:");
@@ -37,35 +41,72 @@ int menu(){
     return op;
 }
 
-void cifrado(char abc[],char tex[]){
+void cifrado(char abc[], char tex[]){
+    
+    //Función para cifrar el texto.
+
     int desplazamiento;
     int letra;
-    int iterador;
-
+    int iterador=0;
+    
     printf("\nIngresa el número correspondiente a el desplazamiento de las letras para el cifrado: ");
     scanf("%d",&desplazamiento);
 
-    printf("\nEl texto introducido es: ");
-    puts(tex);
+    //printf("\nIntroduzca el texto a cifrar: ");fflush(stdin);
+    //fgets(tex,100,stdin); NO LAS EJECUTA SI NO ES MAIN
+
     printf("\nEl texto cifrado es: ");
 
-    while(tex[iterador] != '\0'){
-        letra = 0;
-
-        for(int i = 0; i < 26; i++){
-            if( tex[iterador] == abc[i])
-            letra = i;
-            break;
+    while(tex[iterador] != '\n'){
+        for(int j = 0; j < 26; j++){
+            if(tex[iterador]==' '){
+                printf(" ");
+                break;
+            }
+            if( tex[iterador] == abc[j]){
+                printf("%c", abc[(j+desplazamiento)%26]);
+                break;
+            }
         }
-        printf("%c", abc[letra+desplazamiento]);
         iterador++;
     }
+    printf("\n");
 }
 
 
 void decifrado(char abc[],char tex[]){
-    puts(abc);
-    puts(tex);
+    
+    //Función para decifrar texto
+
+    int desplazamiento;
+    int letra;
+    int iterador=0;
+    
+    printf("\nIngresa el número correspondiente a el desplazamiento de las letras para el decifrado: ");
+    scanf("%d",&desplazamiento);
+
+    //printf("\nIntroduzca el texto a cifrar: ");fflush(stdin);
+    //fgets(tex,100,stdin); NO LAS EJECUTA SI NO ES MAIN
+
+    printf("\nEl texto decifrado es: ");
+
+    while(tex[iterador] != '\n'){
+        for(int j = 0; j < 26; j++){
+            if(tex[iterador]==' '){
+                printf(" ");
+                break;
+            }
+            if( tex[iterador] == abc[j]){
+                if(j-desplazamiento < 0)
+                    printf("%c", abc[(j-desplazamiento)+26]);
+                else
+                    printf("%c", abc[(j-desplazamiento)%26]);
+                break;
+            }
+        }
+        iterador++;
+    }
+    printf("\n");
 }
 
 
@@ -74,11 +115,11 @@ int main(){
 
     int opcion;
     char abedecarioIngles[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-    char texto [100];
-    
+    char texto[100];
+
     printf("Bienvenido, a continuación te pediré que ingreses el texto, después de introducirlo, te daré opciones de lo que puedes hacer.");
-    printf("\nIngresa el texto: "); fflush(stdin);
-    gets(texto);
+    printf("\nIngresa el texto: ");fflush(stdin);
+    fgets(texto,100,stdin);
    
     do{
         opcion = menu();
@@ -102,51 +143,3 @@ int main(){
     printf("\n¡Hasta Luego!\n");
     return 0;
 }
-
-
-/*
-#include<stdio.h>
-#include<string.h>
-
-int main(){
-    
-    char abedecarioIngles[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-    char t[50];
-    int i,l;
-    printf("Ingresa texto: ");
-    gets(t);
-    
-    
-    
-    
-    i=0;
-    while(t[i] != '\0'){
-        for(int j=0; j < 26; j++){
-            if(t[i]==abedecarioIngles[j]){
-                printf("%c", abedecarioIngles[j+3]);
-                break;
-            }
-            switch(t[i]){
-                case 'X':{
-                    printf("%c",'A');
-                    break;
-                }
-                case 'Y':{
-                    printf("%c",'B');
-                    break;
-                }
-                case 'Z':{
-                    printf("%c",'C');
-                    break;
-                }
-                case ' ':{
-                    printf("%c",' ');
-                    break;
-                }
-            }break;
-        }
-        i++;
-    }
-}
-
-*/
